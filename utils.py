@@ -22,6 +22,8 @@ def average_note_length(notes: list[str]) -> float:
 def summarize(notes: list[str]) -> dict:
     """Return a small summary of the notes list."""
     cleaned = normalize_notes(notes)
+    if not cleaned:
+        return {"count": 0, "latest": None, "avg_length": 0}
     return {
         "count": len(cleaned),
         "latest": get_latest_note(cleaned),
