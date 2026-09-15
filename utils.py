@@ -8,13 +8,17 @@ def normalize_notes(notes: list[str]) -> list[str]:
     return [n.strip() for n in notes if n.strip()]
 
 
-def get_latest_note(notes: list[str]) -> str:
-    """Return the most recently added note."""
+def get_latest_note(notes: list[str]) -> str | None:
+    """Return the most recently added note, or None if there are no notes."""
+    if not notes:
+        return None
     return notes[-1]
 
 
 def average_note_length(notes: list[str]) -> float:
-    """Return the average character length across all notes."""
+    """Return the average character length across all notes (0 for an empty list)."""
+    if not notes:
+        return 0
     total_length = sum(len(n) for n in notes)
     return total_length / len(notes)
 
